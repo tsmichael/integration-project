@@ -7,7 +7,8 @@ import java.io.Serializable;
 import java.time.Instant;
 
 public class Article implements Serializable {
-
+    
+    private static final long serialVersionUID = -1056010380112071781L;
     private Long id;
     private String title;
     private String description;
