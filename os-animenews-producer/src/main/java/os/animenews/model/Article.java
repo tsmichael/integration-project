@@ -1,5 +1,8 @@
 package os.animenews.model;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.time.Instant;
 
@@ -40,6 +43,24 @@ public class Article implements Serializable {
                 ", author='" + author + '\'' +
                 ", date=" + date +
                 '}';
+    }
+
+    public byte[] toBytes() {
+        byte[]bytes;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        try{
+            ObjectOutputStream oos = new ObjectOutputStream(baos);
+            oos.writeObject(this);
+            oos.flush();
+            oos.reset();
+            bytes = baos.toByteArray();
+            oos.close();
+            baos.close();
+        } catch(IOException e){
+            bytes = new byte[] {};
+            //Logger.getLogger("bsdlog").error("Unable to write to output stream",e);
+        }
+        return bytes;
     }
 
     public static class Builder {

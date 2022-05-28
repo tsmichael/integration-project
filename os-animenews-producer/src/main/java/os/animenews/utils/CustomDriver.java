@@ -1,6 +1,5 @@
 package os.animenews.utils;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -15,8 +14,11 @@ public class CustomDriver {
 
     public static CustomDriver initDriver() {
         if (instance == null) {
+            System.setProperty("webdriver.chrome.driver",
+                    "src/main/resources/chromedriver.exe");
             instance = new CustomDriver();
-            WebDriverManager.chromedriver().setup();
+            //WebDriverManager.chromedriver().setup();
+
             webDriver = new ChromeDriver();
 
             webDriver.manage().window().maximize();
