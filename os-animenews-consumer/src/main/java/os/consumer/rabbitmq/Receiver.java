@@ -1,10 +1,10 @@
-package os.animenews.rabbitmq;
+package os.consumer.rabbitmq;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
-import os.animenews.model.Article;
+import os.consumer.model.Article;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

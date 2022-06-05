@@ -1,6 +1,6 @@
-package os.animenews.com.application;
+package os.consumer.com.application;
 
-import os.animenews.rabbitmq.Receiver;
+import os.consumer.rabbitmq.Receiver;
 
 public class Main {
 
