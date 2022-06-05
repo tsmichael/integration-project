@@ -1,4 +1,4 @@
-package os.animenews.utils;
+package os.producer.utils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

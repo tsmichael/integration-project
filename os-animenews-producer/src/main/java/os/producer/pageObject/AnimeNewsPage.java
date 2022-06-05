@@ -1,9 +1,9 @@
-package os.animenews.pageObject;
+package os.producer.pageObject;
 
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import os.animenews.model.Article;
+import os.producer.model.Article;
 
 import java.time.Instant;
 import java.util.ArrayList;

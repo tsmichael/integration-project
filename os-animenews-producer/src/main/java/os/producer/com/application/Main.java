@@ -1,10 +1,10 @@
-package os.animenews.com.application;
+package os.producer.com.application;
 
 
-import os.animenews.model.Article;
-import os.animenews.pageObject.AnimeNewsBO;
-import os.animenews.rabbitmq.Sender;
-import os.animenews.utils.CustomDriver;
+import os.producer.model.Article;
+import os.producer.pageObject.AnimeNewsBO;
+import os.producer.rabbitmq.Sender;
+import os.producer.utils.CustomDriver;
 
 import java.util.ArrayList;
 import java.util.List;

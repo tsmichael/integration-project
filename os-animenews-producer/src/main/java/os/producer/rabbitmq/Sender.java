@@ -1,9 +1,9 @@
-package os.animenews.rabbitmq;
+package os.producer.rabbitmq;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
-import os.animenews.model.Article;
+import os.producer.model.Article;
 
 import java.io.IOException;
 import java.util.List;

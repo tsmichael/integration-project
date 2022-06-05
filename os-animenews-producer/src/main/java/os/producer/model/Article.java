@@ -1,4 +1,4 @@
-package os.animenews.model;
+package os.producer.model;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

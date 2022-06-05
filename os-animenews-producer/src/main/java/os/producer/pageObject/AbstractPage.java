@@ -1,10 +1,10 @@
-package os.animenews.pageObject;
+package os.producer.pageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import os.animenews.utils.CustomDriver;
+import os.producer.utils.CustomDriver;
 
 import java.time.Duration;
 import java.util.List;
