@@ -1,10 +1,11 @@
-package os.consumer.model;
+package os.model;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.time.Instant;
+import java.sql.Timestamp;
+import java.util.Objects;
 
 public class Article implements Serializable {
 
@@ -13,7 +14,7 @@ public class Article implements Serializable {
     private String title;
     private String description;
     private String author;
-    private Instant date;
+    private Timestamp date;
 
     public Long getId() {
         return id;
@@ -31,7 +32,7 @@ public class Article implements Serializable {
         return author;
     }
 
-    public Instant getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
@@ -46,22 +47,10 @@ public class Article implements Serializable {
                 '}';
     }
 
-    public byte[] toBytes() {
-        byte[]bytes;
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        try{
-            ObjectOutputStream oos = new ObjectOutputStream(baos);
-            oos.writeObject(this);
-            oos.flush();
-            oos.reset();
-            bytes = baos.toByteArray();
-            oos.close();
-            baos.close();
-        } catch(IOException e){
-            bytes = new byte[] {};
-            //Logger.getLogger("bsdlog").error("Unable to write to output stream",e);
-        }
-        return bytes;
+    public String toDbString() {
+        this.title = getTitle().replace("'","");
+        this.description = getDescription().replace("'","");
+        this.author = getAuthor().replace("'","");
+        return "\'" + title + "\',\'" + description + "\',\'" + author + "\',\'" + date + "\'";
     }
-
 }

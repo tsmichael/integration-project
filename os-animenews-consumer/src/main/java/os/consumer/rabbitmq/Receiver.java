@@ -4,18 +4,21 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
-import os.consumer.model.Article;
+import os.consumer.jdbc.QueryDB;
+import os.model.Article;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.ObjectInput;
 import java.io.ObjectInputStream;
 import java.util.concurrent.TimeoutException;
+
 
 public class Receiver {
 
     private final static String QUEUE_NAME = "qtosql";
 
-    public static void receiveFromQ(){
+    public static void receiveFromQ() {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
         Connection connection = null;
@@ -27,7 +30,10 @@ public class Receiver {
 
             DeliverCallback deliverCallback = (consumerTag, delivery) -> {
                 Article article = fromBytes(delivery.getBody());
+
                 System.out.println(" [x] Received '" + article.toString() + "'");
+                QueryDB.insertIntoArticleTable(article);
+                System.out.println("INSERTED 0 1");
             };
             channel.basicConsume(QUEUE_NAME, true, deliverCallback, consumerTag -> { });
 
@@ -40,24 +46,24 @@ public class Receiver {
 
     }
 
-    public static Article fromBytes(byte[] bytes){
+    public static Article fromBytes(byte[] bytes) {
         Article article = null;
         try {
-            ByteArrayInputStream bis = new ByteArrayInputStream (bytes);
-            ObjectInputStream ois = new ObjectInputStream (bis);
-            article = (Article)ois.readObject();
-            ois.close();
-            bis.close();
-        }
-        catch (IOException e) {
+            ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
+            ObjectInput in = null;
+            in = new ObjectInputStream(bais);
+            article = (Article) in.readObject();
+            in.close();
+            bais.close();
+        } catch (IOException e) {
             e.printStackTrace();
-        }
-        catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex) {
             ex.printStackTrace();
+        } catch (Exception eee) {
+            eee.printStackTrace();
         }
         return article;
     }
-
 
 
 }
