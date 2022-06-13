@@ -1,7 +1,7 @@
 package os.producer.pageObject;
 
 import org.openqa.selenium.WebElement;
-import os.producer.model.Article;
+import os.model.Article;
 
 import java.util.List;
 

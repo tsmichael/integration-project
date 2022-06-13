@@ -3,8 +3,9 @@ package os.producer.pageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import os.producer.model.Article;
+import os.model.Article;
 
+import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,7 @@ public class AnimeNewsPage extends AbstractPage {
             String description = articleBlock.findElement(articleDescription).getText();
             String author = articleBlock.findElement(articleAuthor).getText();
             String date = articleBlock.findElement(articleDate).getAttribute(DATETIME_ATTRIBUTE);
-            Instant timestamp = Instant.parse(date);
+            Timestamp timestamp = Timestamp.from(Instant.parse(date));
 
             articles.add(new Article.Builder()
                     .withTitle(title)

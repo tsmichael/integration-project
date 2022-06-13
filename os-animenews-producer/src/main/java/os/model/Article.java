@@ -1,10 +1,11 @@
-package os.producer.model;
+package os.model;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.time.Instant;
+import java.sql.Timestamp;
+import java.util.Objects;
 
 public class Article implements Serializable {
     
@@ -13,7 +14,7 @@ public class Article implements Serializable {
     private String title;
     private String description;
     private String author;
-    private Instant date;
+    private Timestamp date;
 
     public Long getId() {
         return id;
@@ -31,7 +32,7 @@ public class Article implements Serializable {
         return author;
     }
 
-    public Instant getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
@@ -91,7 +92,7 @@ public class Article implements Serializable {
             return this;
         }
 
-        public Builder withDate(Instant date) {
+        public Builder withDate(Timestamp date) {
             article.date = date;
             return this;
         }
@@ -99,5 +100,18 @@ public class Article implements Serializable {
         public Article build() {
             return article;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Article article = (Article) o;
+        return Objects.equals(id, article.id) && Objects.equals(title, article.title) && Objects.equals(description, article.description) && Objects.equals(author, article.author) && Objects.equals(date, article.date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, description, author, date);
     }
 }

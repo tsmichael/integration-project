@@ -3,7 +3,7 @@ package os.producer.rabbitmq;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
-import os.producer.model.Article;
+import os.model.Article;
 
 import java.io.IOException;
 import java.util.List;
@@ -20,8 +20,8 @@ public class Sender {
 
             channel.queueDeclare(QUEUE_NAME, false, false, false, null);
 
-            for(Article article : articleList){
-                channel.basicPublish("", QUEUE_NAME,null, article.toBytes());
+            for (Article article : articleList) {
+                channel.basicPublish("", QUEUE_NAME, null, article.toBytes());
             }
 
             //System.out.println(" [x] Sent '" + message + "'");

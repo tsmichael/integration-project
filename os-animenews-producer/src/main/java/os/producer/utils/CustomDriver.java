@@ -15,7 +15,7 @@ public class CustomDriver {
     public static CustomDriver initDriver() {
         if (instance == null) {
             System.setProperty("webdriver.chrome.driver",
-                    "src/main/resources/chromedriver.exe");
+                    "os-animenews-producer/src/main/resources/chromedriver.exe");
             instance = new CustomDriver();
             //WebDriverManager.chromedriver().setup();
 

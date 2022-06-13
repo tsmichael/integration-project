@@ -1,7 +1,7 @@
 package os.producer.com.application;
 
 
-import os.producer.model.Article;
+import os.model.Article;
 import os.producer.pageObject.AnimeNewsBO;
 import os.producer.rabbitmq.Sender;
 import os.producer.utils.CustomDriver;
@@ -24,7 +24,6 @@ public class Main {
         } finally {
             CustomDriver.quitDriver();
         }
-
         Sender.sendToQ(articleList);
     }
 
