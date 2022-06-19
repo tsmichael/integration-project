@@ -1,0 +1,12 @@
+type Article {
+    id: Int!
+    title: String!
+    description: String!
+    author: String!
+    date: String!
+}
+
+extend type Query {
+    articles: [Article]
+    articleById(id: Int!): Article
+}
